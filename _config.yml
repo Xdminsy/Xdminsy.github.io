@@ -82,4 +82,3 @@ theme_config:
 deploy:
   type: git
   repo: git@github.com:Xdminsy/Xdminsy.github.io.git
-  branch: published
