@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>fontconfig error cannot load config file infinality/conf.d | 觉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天莫名看见某人说道 phantomjs,于是玩玩儿就想, sudo pacman -S phantomjs,然后开始运行时弹出这么一句话:fontconfig error cannot load config file infinality/conf.d,于是Google之, 却看到 http://www.stata.com/support/faqs/unix/fontconfig-error/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fontconfig error cannot load config file infinality&#x2F;conf.d">
+<meta property="og:url" content="https://xdminsy.github.io/2016/01/30/a-fontconfig-error/index.html">
+<meta property="og:site_name" content="觉">
+<meta property="og:description" content="今天莫名看见某人说道 phantomjs,于是玩玩儿就想, sudo pacman -S phantomjs,然后开始运行时弹出这么一句话:fontconfig error cannot load config file infinality/conf.d,于是Google之, 却看到 http://www.stata.com/support/faqs/unix/fontconfig-error/">
+<meta property="og:locale" content="zh-hans">
+<meta property="og:updated_time" content="2016-01-30T14:36:07.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fontconfig error cannot load config file infinality&#x2F;conf.d">
+<meta name="twitter:description" content="今天莫名看见某人说道 phantomjs,于是玩玩儿就想, sudo pacman -S phantomjs,然后开始运行时弹出这么一句话:fontconfig error cannot load config file infinality/conf.d,于是Google之, 却看到 http://www.stata.com/support/faqs/unix/fontconfig-error/">
+  
+    <link rel="alternate" href="/atom.xml" title="觉" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">觉</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xdminsy.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-a-fontconfig-error" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/30/a-fontconfig-error/" class="article-date">
+  <time datetime="2016-01-30T12:32:14.000Z" itemprop="datePublished">2016-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      fontconfig error cannot load config file infinality/conf.d
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天莫名看见某人说道 <a href="http://phantomjs.org/" target="_blank" rel="noopener">phantomjs</a>,<br>于是玩玩儿就想, <code>sudo pacman -S phantomjs</code>,<br>然后开始运行时弹出这么一句话:<br>fontconfig error cannot load config file infinality/conf.d,<br>于是Google之, 却看到 <a href="http://www.stata.com/support/faqs/unix/fontconfig-error/" target="_blank" rel="noopener">http://www.stata.com/support/faqs/unix/fontconfig-error/</a> ,<br>看起来似乎这并不是phantomjs的问题.似乎是fontconfig的问题(这玩意儿觉之前并从来没听说过).<br>archwiki上看见fontconfig有个fc-list命令.<br>于是<code>fc-list</code>发现也有”fontconfig error cannot load config file infinality/conf.d”.<br>说明这不是phantomjs的问题. 只是phantomjs用到fontconfig了应该.<br>于是Google之fontconfig error, 但没找到有用的.<br>因为他只说infinality/conf.d,并不知道这路径指哪里,不明这infinality啥意思.<br>于是 <code>locate infinality</code>, 于是发现似乎是/etc/fonts/infinality .<br><code>ls -l /etc/fonts/infinality</code>, 发现conf.d -&gt; styles.conf.avail/infinality<br><code>ls -l /etc/fonts/infinality/styles.conf.avail</code><br>果然并没infinality.但看见有styles.conf.avail/linux.<br>不知道他配置如何. 但于是<code>sudo ln -sf styles.conf.avail/linux conf.d</code><br>:) 于是Okay了. 再没出现这句error.</p>
+<p>于是startx开启DE之后.简直了.字体都什么鬼.<br>后知后觉infinality是x11管的似乎.<br>(╯‵□′)╯︵┻━┻不应该改的.<br>改回来便是.<br>于是便不知道该怎么改了.<br>反正似乎并没影响.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xdminsy.github.io/2016/01/30/a-fontconfig-error/" data-id="cjtdzl1q500029klzvpf9rpgs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/09/netkeeper-139-error/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          netkeeper 139 error
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/24/Some-thing-about-terminal/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Some thing about terminal</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/09/netkeeper-139-error/">netkeeper 139 error</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/30/a-fontconfig-error/">fontconfig error cannot load config file infinality/conf.d</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/24/Some-thing-about-terminal/">Some thing about terminal</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 觉<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

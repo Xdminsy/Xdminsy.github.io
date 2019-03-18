@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>觉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="觉">
+<meta property="og:url" content="https://xdminsy.github.io/index.html">
+<meta property="og:site_name" content="觉">
+<meta property="og:locale" content="zh-hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="觉">
+  
+    <link rel="alternate" href="/atom.xml" title="觉" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">觉</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xdminsy.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-netkeeper-139-error" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/09/netkeeper-139-error/" class="article-date">
+  <time datetime="2018-12-09T12:44:17.000Z" itemprop="datePublished">2018-12-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/09/netkeeper-139-error/">netkeeper 139 error</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大学办的电信的宽带、于是得用所谓的闪讯 Netkeeper、说实话很不好用、每天要给一个短信发么么(mm)、不然人家生气就不让你上网。</p>
+<p>本来 Netkeeper 好好的、安装完 Visual Studio 2017 Community 结果 Netkeeper 一直 139 error。当时明白了应该是 VS 的问题不过卸载了也没恢复、甚至为此重装过一次(很愚蠢)、然后依然是安装完 VS 立刻 Netkeeper 就炸了。</p>
+<p>苦恼了很久、VS 和 Netkeeper 都是不可或缺的、但网上能搜到的 Netkeeper 出问题解决方案都试了遍一点用都没用、也没看到哪里有 VS 和 Netkeeper 会冲突、略微了解一下 Netkeeper 的原理和功能、Netkeeper 是自行模拟拨号以此来防止账号多处登陆、然后发现果然这就有线索了、一直是用 L2TP 连接的、于是能搜到 VS 会导致 L2TP 必须 over IPSec、<a href="https://developercommunity.visualstudio.com/content/problem/50402/%E5%AE%89%E8%A3%85vs%E5%90%8E%E7%94%B5%E8%84%91%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5l2tp-vpn.html" target="_blank" rel="noopener">安装 VS 后电脑无法连接 L2TP VPN-&gt;Computers are unable to connect after you install VS L2TP VPN</a>、、所以解决方案有了、就是注册表加 prohibitIPSec=1、</p>
+<p>以下代码保存为 .reg 文件右键合并即可、或者自行开注册表修改、win10 regedit 支持直接输路径定位比较方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Rasman\Parameters]</span><br><span class="line">&quot;ProhibitIpSec&quot;=dword:1</span><br></pre></td></tr></table></figure>
+<p>至此问题解决了、VS 和 Netkeeper 并非鱼和熊掌、虽然还是不理解为什么 VS2015 以后安装完会不让用 L2TP 只能 L2TP over IPSec、但是能上网了能用 VS 了、希望对各位在校用 Netkeeper 的用得到 VS 的学员有些帮助~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xdminsy.github.io/2018/12/09/netkeeper-139-error/" data-id="cjtdzl1q300019klznd8zq6tw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-a-fontconfig-error" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/30/a-fontconfig-error/" class="article-date">
+  <time datetime="2016-01-30T12:32:14.000Z" itemprop="datePublished">2016-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/30/a-fontconfig-error/">fontconfig error cannot load config file infinality/conf.d</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天莫名看见某人说道 <a href="http://phantomjs.org/" target="_blank" rel="noopener">phantomjs</a>,<br>于是玩玩儿就想, <code>sudo pacman -S phantomjs</code>,<br>然后开始运行时弹出这么一句话:<br>fontconfig error cannot load config file infinality/conf.d,<br>于是Google之, 却看到 <a href="http://www.stata.com/support/faqs/unix/fontconfig-error/" target="_blank" rel="noopener">http://www.stata.com/support/faqs/unix/fontconfig-error/</a> ,<br>看起来似乎这并不是phantomjs的问题.似乎是fontconfig的问题(这玩意儿觉之前并从来没听说过).<br>archwiki上看见fontconfig有个fc-list命令.<br>于是<code>fc-list</code>发现也有”fontconfig error cannot load config file infinality/conf.d”.<br>说明这不是phantomjs的问题. 只是phantomjs用到fontconfig了应该.<br>于是Google之fontconfig error, 但没找到有用的.<br>因为他只说infinality/conf.d,并不知道这路径指哪里,不明这infinality啥意思.<br>于是 <code>locate infinality</code>, 于是发现似乎是/etc/fonts/infinality .<br><code>ls -l /etc/fonts/infinality</code>, 发现conf.d -&gt; styles.conf.avail/infinality<br><code>ls -l /etc/fonts/infinality/styles.conf.avail</code><br>果然并没infinality.但看见有styles.conf.avail/linux.<br>不知道他配置如何. 但于是<code>sudo ln -sf styles.conf.avail/linux conf.d</code><br>:) 于是Okay了. 再没出现这句error.</p>
+<p>于是startx开启DE之后.简直了.字体都什么鬼.<br>后知后觉infinality是x11管的似乎.<br>(╯‵□′)╯︵┻━┻不应该改的.<br>改回来便是.<br>于是便不知道该怎么改了.<br>反正似乎并没影响.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xdminsy.github.io/2016/01/30/a-fontconfig-error/" data-id="cjtdzl1q500029klzvpf9rpgs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Some-thing-about-terminal" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/24/Some-thing-about-terminal/" class="article-date">
+  <time datetime="2015-10-24T03:36:29.000Z" itemprop="datePublished">2015-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/24/Some-thing-about-terminal/">Some thing about terminal</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>系統用的Arch Linux,<br>Shell用的zsh, 配置是<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">oh-my-zsh</a>, 嗯, 还有<a href="https://github.com/Xdminsy/dotfiles" target="_blank" rel="noopener">自己的.shrc</a>,然后加上<a href="https://github.com/junegunn/fzf" target="_blank" rel="noopener">fzf</a>,用来快速搜索文件/目录(有个似乎<a href="https://github.com/clvv/fasd" target="_blank" rel="noopener">fasd</a>也这个用处但没用过)<br>当然tmux也不可少, tmux配置用的是<a href="https://github.com/gpakosz/.tmux" target="_blank" rel="noopener">gpakosz的配置</a><br>vim嘛, 自己配置虽然并不咋滴<a href="https://github.com/Xdminsy/dotfiles" target="_blank" rel="noopener">.vimrc</a>, 而且一堆其实用不到的插件, 不想要删掉就行orz.<br>嗯, 还有Win下的<a href="https://www.bitvise.com/" target="_blank" rel="noopener">Bitvise</a>, 用来连接ssh, 曾经用putty, 但putty并不是很好用.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xdminsy.github.io/2015/10/24/Some-thing-about-terminal/" data-id="cjtdzl1py00009klzdx1i98ae" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/09/netkeeper-139-error/">netkeeper 139 error</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/30/a-fontconfig-error/">fontconfig error cannot load config file infinality/conf.d</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/24/Some-thing-about-terminal/">Some thing about terminal</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 觉<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
