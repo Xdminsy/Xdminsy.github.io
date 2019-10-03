@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>presentation-startup | 觉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="经常需要避免屏保的时候、有第三方工具可以解决。但还有一个 Windows 自带的屏幕演示工具可以关闭屏保。 一般操作为 Win-X Mobility Center。然后把里面的 Presenting 给 Turn On 即可。不过 Mobility Center 可以直接 Win-R mblctr 就可以打开。又不过 Presenting 的话有个 PresentationSettings.exe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="presentation-startup">
+<meta property="og:url" content="https://xdminsy.github.io/2019/10/03/presentation-startup/index.html">
+<meta property="og:site_name" content="觉">
+<meta property="og:description" content="经常需要避免屏保的时候、有第三方工具可以解决。但还有一个 Windows 自带的屏幕演示工具可以关闭屏保。 一般操作为 Win-X Mobility Center。然后把里面的 Presenting 给 Turn On 即可。不过 Mobility Center 可以直接 Win-R mblctr 就可以打开。又不过 Presenting 的话有个 PresentationSettings.exe">
+<meta property="og:locale" content="zh-hans">
+<meta property="og:updated_time" content="2019-10-03T18:51:51.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="presentation-startup">
+<meta name="twitter:description" content="经常需要避免屏保的时候、有第三方工具可以解决。但还有一个 Windows 自带的屏幕演示工具可以关闭屏保。 一般操作为 Win-X Mobility Center。然后把里面的 Presenting 给 Turn On 即可。不过 Mobility Center 可以直接 Win-R mblctr 就可以打开。又不过 Presenting 的话有个 PresentationSettings.exe">
+  
+    <link rel="alternate" href="/atom.xml" title="觉" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">觉</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xdminsy.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-presentation-startup" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/03/presentation-startup/" class="article-date">
+  <time datetime="2019-10-03T15:39:45.000Z" itemprop="datePublished">2019-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      presentation-startup
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>经常需要避免屏保的时候、有第三方工具可以解决。但还有一个 Windows 自带的屏幕演示工具可以关闭屏保。</p>
+<p>一般操作为 Win-X Mobility Center。然后把里面的 Presenting 给 Turn On 即可。不过 Mobility Center 可以直接 Win-R mblctr 就可以打开。又不过 Presenting 的话有个 PresentationSettings.exe。支持 /start 或者 /stop 参数。所以也可以直接 Win-R <code>PresentationSettings /start</code> 来操作。不过呢这个重启之后就会自动关闭。</p>
+<p>开了的话托盘会有个 Presentation Settings 的图标。可以点开设置。默认应该是勾选了 Turn off the screen saver 的。所以开着演示模式就不会进屏保。</p>
+<p>然后后来觉经常不喜欢离开一会儿或者看会儿手机就自动屏保了。(虽然指纹解锁但还是感觉好麻烦如果有觉的机子支持 Windows Hello Face 那多好)(虽然特意选了些 Eki 的横向照片当屏保真的狠好看 prpr！！但觉经常是 Win-D 桌面 8 个 Eki 相册 prpr 不用屏保啦！)、真离开的时候会手动 Win-L 的。所以日常习惯开着演示禁屏保。然后就直接 shell:startup (Win 开机启动目录) 里加了 <code>PresentationSettings /start</code>、可是经常会失效。开机还是没有在 Presenting。其实觉也没有意识到为什么。当时想以为是 shell:startup 的问题。反正开机启动的方式不少寻思着用 Task Scheduler 试试。</p>
+<p>Task Scheduler 其实很好用的。打开方式也是习惯性 win-r taskschd.msc 或者 win-r control schedtasks。(其实直接 win-s 直接搜 task scheduler 就行的 hhh)。虽然觉也用 Wox 但总感觉纯净的原版 Win-R 更快更帅 hh? 又其实还可以直接通过 schtasks 来操作 tasks。不过既然自己改的话还是 GUI 操作方便。就还是很简单的建一个 task 设置开机启动。当时想的是 shell:startup 里可能因为还没登陆或者什么原因所以 <code>PresentationSettings /start</code> 失败了。所以 Task 给加了 5 分钟延迟。觉屏保是 15 分钟的足够了。</p>
+<p>觉创建的 Task 名字叫 PrensentationStart、创建完在一列 Tasks 中想找一找、然后很喜感的、发现。怎么有个 PrensentationSettingsTurnOff 的 Task 开机启动啊！！！惊了！！怪不得觉之前自启的 Prensenting 失效。原来他有这么个开机自动关了的 Task。所以偶尔失效就是因为觉开机开了然后被他这个 Task 给关了 23333。那么觉新建的 Task 就没用了。。顺便把他自带的这个 TurnOff Task 也 Disabled。之后 Prensenting 就 Persist 了 hhh。就不会进屏保啦。</p>
+<p>However 后知后觉考虑到。为什么。不。直接。把屏幕保护给关了呢！！Timeout 可以设置 Never 的啊！！！被自己蠢哭了。。用 Presenting Mode 的方法是为了暂时关闭屏保的。要永久关了设置里关啊！不过现在还是一直开着 Presenting。可能因为习惯了？</p>
+<p>哼。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xdminsy.github.io/2019/10/03/presentation-startup/" data-id="ck1b24fit0002aglzaox0uegg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/26/ahk-mouse-actions/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AHK 提升鼠标操作效率</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/03/presentation-startup/">presentation-startup</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/26/ahk-mouse-actions/">AHK 提升鼠标操作效率</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/09/netkeeper-139-error/">netkeeper 139 error</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/30/a-fontconfig-error/">fontconfig error cannot load config file infinality/conf.d</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/24/Some-thing-about-terminal/">Some thing about terminal</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 觉<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
