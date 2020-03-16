@@ -10,6 +10,8 @@ tags:
 
 开了的话托盘会有个 Presentation Settings 的图标。可以点开设置。默认应该是勾选了 Turn off the screen saver 的。所以开着演示模式就不会进屏保。
 
+<!--more-->
+
 然后后来觉经常不喜欢离开一会儿或者看会儿手机就自动屏保了。(虽然指纹解锁但还是感觉好麻烦如果有觉的机子支持 Windows Hello Face 那多好)(虽然特意选了些 Eki 的横向照片当屏保真的狠好看 prpr！！但觉经常是 Win-D 桌面 8 个 Eki 相册 prpr 不用屏保啦！)、真离开的时候会手动 Win-L 的。所以日常习惯开着演示禁屏保。然后就直接 shell:startup (Win 开机启动目录) 里加了 `PresentationSettings /start`、可是经常会失效。开机还是没有在 Presenting。其实觉也没有意识到为什么。当时想以为是 shell:startup 的问题。反正开机启动的方式不少寻思着用 Task Scheduler 试试。
 
 Task Scheduler 其实很好用的。打开方式也是习惯性 win-r taskschd.msc 或者 win-r control schedtasks。(其实直接 win-s 直接搜 task scheduler 就行的 hhh)。虽然觉也用 Wox 但总感觉纯净的原版 Win-R 更快更帅 hh? 又其实还可以直接通过 schtasks 来操作 tasks。不过既然自己改的话还是 GUI 操作方便。就还是很简单的建一个 task 设置开机启动。当时想的是 shell:startup 里可能因为还没登陆或者什么原因所以 `PresentationSettings /start` 失败了。所以 Task 给加了 5 分钟延迟。觉屏保是 15 分钟的足够了。

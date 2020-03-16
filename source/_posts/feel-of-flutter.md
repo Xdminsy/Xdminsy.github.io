@@ -9,6 +9,7 @@ Flutter 的起源是 Chrome 团队的 Eric Seidel 删了很多 Chrome 的兼容�
 发现性能好了很多。
 于是启动了一个叫 Sky 的项目。
 而在之后改名成了 Flutter。
+<!--more-->
 当时只能运行在 Android 上。
 当时听着无心。
 现在想来可怕。
